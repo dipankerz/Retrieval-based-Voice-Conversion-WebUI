@@ -94,3 +94,68 @@ todolist：
 - 收集呼吸wav加入训练集修正呼吸变声电音的问题
 - 我们正在训练增加了歌声训练集的底模，未来会公开
 
+### English Translation
+
+Certainly! Here's the translation of the provided text:
+
+**Update on 2023-08-13**
+1- General Bug Fixes
+
+- Minimum saving frequency changed to 1, minimum total rounds changed to 2.
+- Fixed training errors in models without pretraining.
+- Added memory cleanup after separating accompaniment and vocals.
+- Changed faiss saving path from absolute to relative.
+- Supported paths containing spaces (both for training set paths and experiment names, no longer causing errors).
+- Removed mandatory UTF-8 encoding for filelist.
+- Resolved high CPU usage issue caused by enabling indexing during real-time voice modulation.
+
+**2- Key Updates**
+
+- Trained the most powerful open-source vocal pitch extraction model RMVPE, used for RVC training, offline/real-time inference, supporting pytorch/onnx/DirectML.
+- Supported real-time voice modulation (1), inference (2), and vocal accompaniment separation (3) for A and I series Nvidia GPUs through pytorch-dml. Training switched to CPU training. Supported rmvpe_gpu inference through onnx_dml.
+
+**Update on 2023-06-18**
+
+- Added new pre-trained models for 32k and 48k.
+- Fixed inference errors for non-f0 models.
+- Optimized index building for training sets longer than an hour, using automatic kmeans feature reduction for faster training, joining, and querying.
+- Provided a repository for vocal-to-guitar conversion.
+- Removed outliers in data processing.
+- Added options tab for onnx export.
+
+**Failed Experiments:**
+
+- Adding temporal dimension to feature retrieval: Unsuccessful, no significant effect.
+- Adding optional PCAR dimension reduction to feature retrieval: Unsuccessful, data reduction via kmeans proved more efficient.
+- Supported onnx inference (compressed package included): Unsuccessful, pytorch still required for generating nsf.
+- Random augmentation in pitch, gender, eq, and noise during training: Unsuccessful, no significant effect.
+- Explored integration of small-scale vocoders: Resulted in worse performance.
+
+**To-Do List:**
+
+- Support crepe for pitch recognition in the training set: Replaced by RMVPE, not needed.
+- Multi-process harvest inference: Replaced by RMVPE, not needed.
+- Synchronize crepe accuracy with RVC-config: Replaced by RMVPE, not needed. Requires syncing with torchcrepe library, troublesome.
+- Integrate F0 editor.
+
+**Update on 2023-05-28**
+
+- Added jupyter notebook for v2, Korean changelog, additional environment dependencies.
+- Added modes for breath, clear consonant, and fricative protection.
+- Supported crepe-full inference.
+- UVR5 vocal accompaniment separation with 3 delay removal models and MDX-Net dereverberation model, added HP3 vocal extraction model.
+- Added version and experiment name to index names.
+- Increased audio export format options for batch export of vocal accompaniment separation and inference.
+
+**Update on 2023-05-13**
+
+- Removed remnants of old versions' runtime from one-click package.
+- Fixed bug in training set preprocessing pseudomultiprocessing.
+- Added option for pitch recognition via median filtering to mitigate breathy voice phenomenon.
+- Added post-processing resampling for exported audio.
+- Changed number of CPU processes from "adjust F0 extraction only" to "adjust data preprocessing and F0 extraction".
+- Automatically detected index path in logs folder with dropdown list functionality.
+- Added "Frequently Asked Questions" tab (also available on GitHub-RVC-wiki).
+- Added pitch cache for same-path input audio inference (useful for users testing different timbres, indexes, and median filtering radii, avoiding redundant pitch extraction).
+
+Please note that some sections, particularly involving technical terms and software components, may be challenging to translate precisely without more context.
