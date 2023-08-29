@@ -96,8 +96,6 @@ todolist：
 
 ### English Translation
 
-Certainly! Here's the translation of the provided text:
-
 **Update on 2023-08-13**
 1- General Bug Fixes
 
